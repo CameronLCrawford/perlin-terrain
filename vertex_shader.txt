@@ -1,0 +1,21 @@
+#version 330 core
+
+in vec3 position;
+  
+out vec3 vertexColour;
+
+uniform mat4 projectionMatrix;
+
+void main()
+{
+    gl_Position = projectionMatrix * vec4(position, 1.0);
+	float height = position.y;
+	if (height > 0)
+	{
+		vertexColour = vec3(height / 40, height / 60, height / 60);
+	}
+	else
+	{
+		vertexColour = vec3(-height / 60, -height / 60, -height / 20);
+	}
+}    
